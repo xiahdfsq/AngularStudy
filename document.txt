@@ -1,0 +1,67 @@
+npm install -g npm //升级npm
+npm install @angular/cli -g
+ng new AngularStudy //创建项目为angularstudy
+npm install //安装插件
+ng serve //
+npm run start
+
+npm install jquery --save
+npm install bootstrap --save
+npm install @types/jquery --save-dev
+npm install @types/bootstrap --save-dev
+
+src  引用源代码目录
+angular-cli.json  //angular 命令行配置的文件
+karma.conf.js //单元测试执行器
+protractor.conf.js //自动化测试配置文件
+tslint.json  //代码质量检测
+
+src/index.html //程序入口文件
+src/main.ts //脚本入口文件
+src/polyfills.ts //导入一些库  兼容老版本浏览器
+src/styles.css //全局样式
+src/test.ts //自动化测试
+
+component:@component-装饰器 template-模板 controller-控制器
+
+//生成组件
+ng g component navbar 
+ng g component footer
+
+//生成管道
+ng g pipe pipe/mutiple
+
+//生成服务
+ng g service service/product
+
+组件的生命周期
+OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy 
+//只调用一次
+constructor、OnInit、AfterContentInit、AfterViewInit、OnDestroy
+//多次调用,变化检测
+OnChanges, DoCheck,AfterContentChecked,AfterViewChecked
+
+OnChanges//父组件初始化，修改子组件输入参数时被调用，或者父组件传过来的值变化时,首次调用一定会发生在.ngOnInit之前。PS：输入值为按地址传值会触发NgOnChange,所以变量引用没有变化
+
+ngOnInit//在组件初始化的时候调用，只调用一次，在第一次调用ngOnChanges之后调用
+
+DoCheck//变更检测机制,zone.js控制，保证组件属性的变化与页面变化同步,在组件定义的属性或方法变更时调用(用于脏值之检测，非常耗性能，因为会把所有的属性和方法都检测一遍),
+会在ngOnChanges()和ngOnInit()之后
+
+ngAfterViewInit//只被调用一次，组件视图初始化完毕后调用，子组件的钩子优先于父组件调用
+
+AfterViewChecked//多次被调用，子组件的视图变更检测完毕，子组件的钩子优先于父组件调用
+
+AfterContentInit//当把内容投影进组件之后调用，在第一次ngDoCheck之后调用，只调用一次
+AfterContentChecked//每次完成被投影组件内容的变更检测之后调用，在ngAfterContentInit和每次ngDoCheck之后调用
+//投影，将父组件的内容加入到子组件
+<app-child>
+	<div class="heared">
+	头部:这个是需要投影的部分，写在主组件
+	</div>
+	<div class="footer">
+		结尾: 这个是需要投影的部分，写在主组件
+	</div>
+</app-child>
+<ng-content select=".heared"></ng-content>
+<ng-content select=".footer"></ng-content>

@@ -1,0 +1,25 @@
+<!-- <app-price-quote (buy)="buyHandler($event)"></app-price-quote>
+<app-order [priceQuote]="priceQuote"></app-order>
+<div>管道：{{size | mutiple:'4'}}</div> -->
+<form role="form" name="searchForm">
+  <div class="form-group">
+    <label for="productTitle">商品名称</label>
+    <input type="text" id="productTitle" class="form-control" id="exampleInputEmail1" placeholder="商品名称">
+  </div>
+  <div class="form-group">
+    <label for="productPrice">商品价格</label>
+    <input type="number" id="productPrice" class="form-control" placeholder="商品价格">
+  </div>
+  <div class="form-group">
+    <label for="productGategory">商品类别</label>
+    <select id="productGategory" class="form-control" placeholder="商品类别">
+    	<option>1</option>
+	  	<option>2</option>
+	  	<option>3</option>
+	  	<option>4</option>
+    </select> 
+  </div>
+  <div class="form-group">
+  <button type="submit" class="btn btn-primary btn-block">提交</button>
+  </div>
+</form>

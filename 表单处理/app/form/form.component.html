@@ -1,0 +1,36 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value, myForm.valid)" novalidate>
+	<div>用户名:
+		<input ngModel required minlength="6" name="username" #username="ngModel" (input)="inputHaddle(myForm)" type="text">
+	</div>
+	<div [hidden]=" mobileValid || mobileUntouched">
+		<div [hidden]="!myForm.form.hasError('required','username')">
+			<em>用户名是必填项</em>
+		</div>
+		<div [hidden]="!myForm.form.hasError('minlength','username')">
+			<em>最小长度是6</em>
+		</div>	
+	</div>
+	<div>手机号:
+	    <input ngModel phone name="phone" type="number">
+	</div>
+	<div [hidden]="!myForm.form.hasError('phone','phone')">
+			<em>请输入正确手机号</em>
+		</div>
+	<div ngModelGroup="passwordGroup" equal>
+		<div>密码:<input ngModel name="password" minlength="6" type="text"></div>
+		<div [hidden]="!myForm.form.hasError('minlength',['passwordGroup','password'])">
+			<em>密码最小长度是6</em>
+		</div>
+		<div>确认密码:<input ngModel name="recheck" type="text"></div>
+		<div [hidden]="!myForm.form.hasError('equal','passwordGroup')">
+			{{formModel.getError('equal','passwordGroup')?.descxxx}}
+		</div>
+	</div>
+	<button type="submit">注册</button>
+</form>
+<!-- <div>
+	{{ngForm.value | json}}
+</div>
+<h4>
+	{{username.value}}
+</h4> -->

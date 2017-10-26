@@ -1,0 +1,9 @@
+<div>
+	<h2>ngChange component</h2>
+	<p>问候语：{{greeting}}</p>
+	<p>姓名:{{user.name}}</p>
+	<p>消息: <input [(ngModel)]="message"></p>
+</div>
+<app-on-check #child1></app-on-check>
+<app-on-check #child2></app-on-check>
+<button (click)="child2.greetingFunction('justin')">点击调用子组件方法</button> 
